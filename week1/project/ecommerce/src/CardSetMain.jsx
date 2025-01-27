@@ -1,7 +1,5 @@
 import React from 'react';
-// import allProducts from './fake-data/all-products.js';
 import Product from './Card.jsx';
-// import filterProduct from './button.jsx';
 
 const CardSetMain = ({ filterProducts }) => {
     return (

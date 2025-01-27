@@ -2,11 +2,6 @@ import React from 'react';
 import Button from './Button.jsx';
 import allCategories from './fake-data/all-categories.js';
 
-// function buttons () {
-//     allCategories.forEach(category => {
-//         return <Button buttonName={category} />
-//     })
-// }
 
 const ButtonSet = ({ setFilterProducts }) => {
     return (

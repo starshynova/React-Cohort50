@@ -14,6 +14,7 @@ function App() {
 
   return (
     <main>
+    <h1>Products</h1>
     <ButtonSet setFilterProducts={handleFilterProducts} />
     <CardSetMain filterProducts={filterProducts} /> 
     </main>

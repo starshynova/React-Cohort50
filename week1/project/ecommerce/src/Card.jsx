@@ -3,7 +3,6 @@ const Product = (props) => {
         <div className="card">
             <img src={props.image} alt={props.title} />
             <h2>{props.title}</h2>
-            <p>{props.price}</p>
         </div>
     )
 };
