@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from './button.jsx';
+import Button from './Button.jsx';
 import allCategories from './fake-data/all-categories.js';
 
 // function buttons () {
@@ -8,11 +8,11 @@ import allCategories from './fake-data/all-categories.js';
 //     })
 // }
 
-const ButtonSet = () => {
+const ButtonSet = ({ setFilterProducts }) => {
     return (
-        <div>
+        <div className="button-set">
            {allCategories.map((category, index) => (
-            <Button key={index} buttonName={category} />
+            <Button key={index} buttonName={category} setFilterProducts={setFilterProducts} />
          ))}
         </div>
     )

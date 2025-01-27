@@ -1,13 +1,22 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import ButtonSet from './buttonSet.jsx'
+import ButtonSet from './ButtonSet.jsx';
+import CardSetMain from './CardSetMain.jsx';
+import allProducts from './fake-data/all-products.js';
 
 function App() {
+  const [filterProducts, setFilterProducts] = useState(allProducts);
+
+  const handleFilterProducts = (category) => {
+    const filtered = allProducts.filter(product => product.category === category.replace(/^FAKE:\s*/, ''));
+    setFilterProducts(filtered);
+  };
 
   return (
-   <ButtonSet />
+    <main>
+    <ButtonSet setFilterProducts={handleFilterProducts} />
+    <CardSetMain filterProducts={filterProducts} /> 
+    </main>
   )
 }
 
