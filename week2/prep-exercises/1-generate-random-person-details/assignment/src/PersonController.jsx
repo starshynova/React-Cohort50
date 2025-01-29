@@ -9,7 +9,14 @@ function PersonController () {
     try {
     const res = await fetch('https://www.randomuser.me/api?results=1');
     const data = await res.json();
-    setPerson(data.results[0]);
+
+    const shortPerson = {
+        firstName: data.results[0].name.first,
+        lastName: data.results[0].name.last,
+        email: data.results[0].email,
+    }
+
+    setPerson(shortPerson);
     setLoading(false);
   }  catch (error)
    {console.error("Error fetching user:", error)};
@@ -28,10 +35,7 @@ function PersonController () {
     }
 
     return (
-        <Person 
-        firstName={person.name.first} 
-        lastName={person.name.last} 
-        email={person.email} /> 
+        <Person person={person} /> 
     )
 }
 

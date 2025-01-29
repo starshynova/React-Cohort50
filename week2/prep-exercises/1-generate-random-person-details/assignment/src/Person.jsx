@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Person (props) {
+function Person ({person}) {
     return (
     <ul>
-        <li>First name: {props.firstName}</li>
-        <li>Last name: {props.lastName}</li>
-        <li>Email: {props.email}</li>
+        <li>First name: {person.firstName}</li>
+        <li>Last name: {person.lastName}</li>
+        <li>Email: {person.email}</li>
     </ul>
     )
 }
