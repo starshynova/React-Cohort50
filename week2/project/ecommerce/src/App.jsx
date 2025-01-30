@@ -2,34 +2,47 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import ButtonSet from './ButtonSet.jsx';
 import CardSetMain from './CardSetMain.jsx';
-import allProducts from './fake-data/all-products.js';
 
 function App() {
-  const [filterProducts, setFilterProducts] = useState(allProducts);
+  const [filterProducts, setFilterProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchCategory = async () => {
-    const response = await fetch('https://fakestoreapi.com/products/categories');
+  const fetchDefaultCard = async () => {
+    const response = await fetch('https://fakestoreapi.com/products');
+    const data = await response.json();
+    setFilterProducts(data);
+    setLoading(false);
+  }
+
+  const fetchSelectedCategory = async (category) => {
+    const response = await fetch(`https://fakestoreapi.com/products/category/${category}`);
     const data = await response.json();
     setFilterProducts(data);
     setLoading(false);
   }
 
   useEffect(() => {
-    fetchCategory();
+    fetchDefaultCard(); 
   }, []);
 
-
   const handleFilterProducts = (category) => {
-    const filtered = allProducts.filter(product => product.category === category.replace(/^FAKE:\s*/, ''));
-    setFilterProducts(filtered);
+    if (category === 'all') {
+      fetchDefaultCard(); 
+    } else {
+      fetchSelectedCategory(category);
+    }
   };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
 
   return (
     <main>
     <h1>Products</h1>
     <ButtonSet setFilterProducts={handleFilterProducts} />
-    <CardSetMain filterProducts={filterProducts} /> 
+    <CardSetMain fetchDefaultCard={filterProducts} />
     </main>
   )
 }

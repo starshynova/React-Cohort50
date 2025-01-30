@@ -1,26 +1,3 @@
-// import React from 'react';
-// import Button from './Button.jsx';
-
-
-// const ButtonSet = ({ setFilterProducts }) => {
-//     const fetchCategories = async () => {
-//         const response = await fetch('https://fakestoreapi.com/products/categories');
-//         const data = await response.json();
-//         // return data;
-//         setFilterProducts(data);
-//     }
-//     return (
-//         <div className="button-set">
-//            {fetchCategories.map((category, index) => (
-//             <Button key={index} buttonName={category} setFilterProducts={setFilterProducts} />
-//          ))}
-//         </div>
-//     )
-// }
-
-// export default ButtonSet;
-
-
 import React, { useState, useEffect } from 'react';
 import Button from './Button.jsx';
 
