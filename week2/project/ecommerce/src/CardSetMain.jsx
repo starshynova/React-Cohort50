@@ -1,16 +1,19 @@
 import React from 'react';
-import Product from './Card.jsx';
+import Card from './Card.jsx';
 
-const CardSetMain = ({ fetchDefaultCard }) => {
+const CardSetMain = ({ filterProducts }) => {
     return (
         <div className="card-set">
-            {fetchDefaultCard.map((product, index) => (
-                <Product key={index} 
-                image={product.image} 
-                title={product.title} />
+            {filterProducts.map((product) => (
+                <Card
+                    key={product.id}
+                    id={product.id}
+                    image={product.image}
+                    title={product.title}
+                />
             ))}
         </div>
-    )
+    );
 };
 
 export default CardSetMain;

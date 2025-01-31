@@ -127,3 +127,23 @@ h1 {
     gap: 20px,
   }
 }
+
+.image-button img {
+  cursor: pointer;
+}
+
+.image-button img:hover {
+  transform: scale(1.05);
+}
+
+.product-image {
+  max-width: 40%;
+}
+
+.product-card {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}

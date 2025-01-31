@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import ButtonSet from './ButtonSet.jsx';
 import CardSetMain from './CardSetMain.jsx';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ProductCard from './ProductCard.jsx';
 
 function App() {
   const [filterProducts, setFilterProducts] = useState([]);
@@ -39,12 +41,19 @@ function App() {
 
 
   return (
-    <main>
-    <h1>Products</h1>
-    <ButtonSet setFilterProducts={handleFilterProducts} />
-    <CardSetMain fetchDefaultCard={filterProducts} />
-    </main>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={
+          <>
+          <h1>Products</h1>
+          <ButtonSet setFilterProducts={handleFilterProducts} />
+          <CardSetMain filterProducts={filterProducts} />
+          </>
+        } />
+        <Route path="/product/:id" element={<ProductCard />} />
+      </Routes>
+    </BrowserRouter>
   )
-}
+};
 
-export default App
+export default App;
