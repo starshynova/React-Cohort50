@@ -1,1 +1,1 @@
-## [The firs version on the app](https://ls-products-ver1.netlify.app/)
+## [The second version of the app](/https://ls-products-ver2.netlify.app/)

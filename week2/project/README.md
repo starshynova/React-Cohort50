@@ -1,10 +1,7 @@
 # Ecommerce Project II
 
-## 1. Setup
 
-Make sure you created a new week2 branch from the `main` branch of your forked repo. Then copy over the `ecommerce` folder you made last week into the `week2/project` folder. That way any feedback you get for week1 can be changed in the week1 branch and you are free to refactor this week as you see fit. This does mean you may need to apply the same changes to multiple branches, but let's say that that is good for the learning process :).
-
-## 2. Requirements
+## Requirements
 
 We are going to focus on linking up our app to the API this week. By the end of the assignment your application should work similar to this:
 
@@ -24,3 +21,5 @@ What you need to have done at the end of the week:
 - Your app needs to show an error message if the request failed
 - Your app needs to go to a detail page `/product/:id` whenever you click on the product card in the list. This should get the details from the endpoint: `https://fakestoreapi.com/products/<id>`. For now we won't add a navigation bar, the browsers 'back' button will do the trick. _TIP: You will need to add the `react-router-dom` package and add the routing to your app regardless._
 - You need to deploy your app somewhere (using something like [netlify](https://www.netlify.com)) and put the link in your PR! Make it a different one than the previous week.
+
+## [The second version of the app](/https://ls-products-ver2.netlify.app/)
