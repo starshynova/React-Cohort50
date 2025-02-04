@@ -1,18 +1,14 @@
+import React from 'react';
 import {useEffect, useState} from 'react';
-import { getData } from './getData.js';
-import QuestionSection from './ QuestionSection.jsx';
+import QuestionSection from './QuestionSection.jsx';
+import {getData} from '../getData.js';
+import './component.css';
 
 
 const QuestionSectionSet = () => {
     const [data, setData] = useState([]);
 
-    // const QuestionSection = ({operation}) => {
-    //     return (
-    //         <button className="question-section">
-    //             {operation}
-    //         </button>
-    //     )
-    // };
+
     useEffect(() => {
         const fetchData = async () => {
             const result = await getData();

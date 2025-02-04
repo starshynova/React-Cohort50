@@ -48,22 +48,23 @@
   padding: auto;
 }
 
-.question-section {
+/* .question-section {
   width: 20%;
   height: 100px;
-  background-color: aquamarine;
+  background-color: rgb(253, 127, 255);
   border: 2px solid black;
 }
 
 .question-section-set {
-  display: flex;
+ 
+  width: 100%;
+  height: auto; display: flex;
   flex-direction: row;
   gap: calc(20%/3);
-  width: 100%;
-  height: auto;
+ 
   background-color: chartreuse;
   padding: auto;
-}
+} */
 
 .center {
   width: 80%;
