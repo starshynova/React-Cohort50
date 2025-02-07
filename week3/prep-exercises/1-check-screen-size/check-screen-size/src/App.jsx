@@ -1,6 +1,5 @@
 import React from 'react';
 
-// import { useState, useDebugValue, useEffect } from 'react'
 import './App.css';
 import { useWindowSize } from './useWindowSize';
 import PersonByWindowSize from './PersonByWindowSize';
@@ -15,8 +14,6 @@ function DisplaySize({ width, height }) {
       </div>
   )
 }
-
-
 
 function App() {
   const { width, height } = useWindowSize()
