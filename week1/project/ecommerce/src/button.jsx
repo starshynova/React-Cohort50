@@ -1,14 +1,8 @@
-import React from 'react';
 
-// const setFilterProducts = (buttonName) => {
-//     allProducts.filter(product => product.category === buttonName.replace(/^FAKE:\s*/, ''));
-//     console.log(setFilterProducts);
-//     };
-
-const Button = ({ buttonName, setFilterProducts }) => {
+const Button = ({ buttonName, setFilterCards }) => {
     
     return (
-        <button onClick={() => setFilterProducts(buttonName)}>{buttonName}</button>
+        <button onClick={() => setFilterCards(buttonName)}>{buttonName}</button>
     );
 };
 

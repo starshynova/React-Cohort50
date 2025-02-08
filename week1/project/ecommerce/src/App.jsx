@@ -5,18 +5,18 @@ import CardSetMain from './CardSetMain.jsx';
 import allProducts from './fake-data/all-products.js';
 
 function App() {
-  const [filterProducts, setFilterProducts] = useState(allProducts);
+  const [filterCards, setFilterCards] = useState(allProducts);
 
-  const handleFilterProducts = (category) => {
-    const filtered = allProducts.filter(product => product.category === category.replace(/^FAKE:\s*/, ''));
-    setFilterProducts(filtered);
+  const handleFilterCards = (category) => {
+    const filtered = allProducts.filter(card => card.category === category);
+    setFilterCards(filtered);
   };
 
   return (
     <main>
     <h1>Products</h1>
-    <ButtonSet setFilterProducts={handleFilterProducts} />
-    <CardSetMain filterProducts={filterProducts} /> 
+    <ButtonSet setFilterCards={handleFilterCards} />
+    <CardSetMain filterCards={filterCards} /> 
     </main>
   )
 }

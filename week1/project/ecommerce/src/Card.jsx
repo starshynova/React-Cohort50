@@ -1,4 +1,4 @@
-const Product = (props) => {
+const Card = (props) => {
     return (
         <div className="card">
             <img src={props.image} alt={props.title} />
@@ -7,4 +7,4 @@ const Product = (props) => {
     )
 };
 
-export default Product;
+export default Card;
