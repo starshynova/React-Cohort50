@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import ButtonSet from './buttonSet.jsx';
+import CategoryList from './CategoryList.jsx';
 import CardSetMain from './CardSetMain.jsx';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProductCard from './ProductCard.jsx';
@@ -46,7 +46,7 @@ function App() {
         <Route path="/" element={
           <>
           <h1>Products</h1>
-          <ButtonSet setFilterProducts={handleFilterProducts} />
+          <CategoryList setFilterProducts={handleFilterProducts} />
           <CardSetMain filterProducts={filterProducts} />
           </>
         } />

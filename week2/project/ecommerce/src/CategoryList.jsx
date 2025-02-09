@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const ButtonSet = ({ setFilterProducts }) => {
+const CategoryList = ({ setFilterProducts }) => {
     const [categories, setCategories] = useState([]);
 
     const fetchCategories = async () => {
@@ -30,4 +30,4 @@ const ButtonSet = ({ setFilterProducts }) => {
     );
 };
 
-export default ButtonSet;
+export default CategoryList;
