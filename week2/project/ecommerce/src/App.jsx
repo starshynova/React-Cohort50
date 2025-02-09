@@ -8,20 +8,43 @@ import ProductCard from './ProductCard.jsx';
 function App() {
   const [filterProducts, setFilterProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const fetchDefaultCard = async () => {
+    try {
+    setLoading(true);
+    setError(null);
     const response = await fetch('https://fakestoreapi.com/products');
+    if (!response.ok) {
+      throw new Error('Failed to fetch products');
+    }
     const data = await response.json();
     setFilterProducts(data);
+  } catch (error) {
+    console.error(error);
+    setError('Unable to get products, please try again');
+  } finally {
     setLoading(false);
   }
+}
 
   const fetchSelectedCategory = async (category) => {
+    try {
+    setLoading(true);
+    setError(null);
     const response = await fetch(`https://fakestoreapi.com/products/category/${category}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch category products');
+    }
     const data = await response.json();
     setFilterProducts(data);
+  } catch (error) {
+    console.error(error);
+    setError('Unable to get products, please try again');
+  } finally {
     setLoading(false);
   }
+}; 
 
   useEffect(() => {
     fetchDefaultCard(); 
