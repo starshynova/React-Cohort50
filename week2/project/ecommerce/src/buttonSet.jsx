@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Button from './Button.jsx';
 
 const ButtonSet = ({ setFilterProducts }) => {
     const [categories, setCategories] = useState([]);
@@ -8,7 +7,7 @@ const ButtonSet = ({ setFilterProducts }) => {
         try {
             const response = await fetch('https://fakestoreapi.com/products/categories');
             const data = await response.json();
-            setCategories(data); 
+            setCategories(data);
         } catch (error) {
             console.error('Error fetching categories:', error);
         }
@@ -21,11 +20,11 @@ const ButtonSet = ({ setFilterProducts }) => {
     return (
         <div className="button-set">
             {categories.map((category, index) => (
-                <Button
-                    key={index}
-                    buttonName={category}
-                    setFilterProducts={setFilterProducts}
-                />
+                <button 
+                    key={index} 
+                    onClick={() => setFilterProducts(category)} >
+                    {category}
+                </button>
             ))}
         </div>
     );

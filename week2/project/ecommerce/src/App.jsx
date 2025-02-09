@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import ButtonSet from './ButtonSet.jsx';
+import ButtonSet from './buttonSet.jsx';
 import CardSetMain from './CardSetMain.jsx';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProductCard from './ProductCard.jsx';
