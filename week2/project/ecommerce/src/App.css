@@ -31,7 +31,7 @@ img {
   text-align: center;
 }
 
-button {
+.category-list {
   background-color:  rgb(196, 204, 225);
   width: calc(25% - 40px);
   height: 80px;
@@ -43,12 +43,12 @@ button {
   box-sizing: border-box;
 }
 
-button:hover {
+.category-list:hover {
   width: 23%;
   height: 88px;
 }
 
-button:active {
+.category-list:active {
   background-color: rgb(26, 41, 79);
   color: white;
 }
@@ -82,13 +82,13 @@ h1 {
     margin: 20px auto;
   }
 
-  button {
+  .category-list {
     width: calc(50% - 40px);
     height: 60px;
     font-size: 16px;
   }
 
-  button:hover {
+  .category-list:hover {
     width: 47%;
     height: 64px;
   }
@@ -110,13 +110,13 @@ h1 {
     margin: 20px auto;
   }
 
-  button {
+  .category-list {
     width: 60%;
     height: 60px;
     font-size: 16px;
   }
 
-  button:hover {
+  .category-list:hover {
     width: 68%;
     height: 64px;
   }

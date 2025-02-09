@@ -20,7 +20,7 @@ const CategoryList = ({ setFilterProducts }) => {
     return (
         <div className="button-set">
             {categories.map((category, index) => (
-                <button 
+                <button className="category-list"
                     key={index} 
                     onClick={() => setFilterProducts(category)} >
                     {category}
