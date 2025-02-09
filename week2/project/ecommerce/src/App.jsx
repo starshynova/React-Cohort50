@@ -3,7 +3,7 @@ import './App.css'
 import CategoryList from './CategoryList.jsx';
 import CardSetMain from './CardSetMain.jsx';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import ProductCard from './ProductCard.jsx';
+import ProductDetail from './ProductDetail.jsx';
 
 function App() {
   const [filterProducts, setFilterProducts] = useState([]);
@@ -73,7 +73,7 @@ function App() {
           <CardSetMain filterProducts={filterProducts} />
           </>
         } />
-        <Route path="/product/:id" element={<ProductCard />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
       </Routes>
     </BrowserRouter>
   )

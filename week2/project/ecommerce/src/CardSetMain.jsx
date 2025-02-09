@@ -1,11 +1,10 @@
-import React from 'react';
-import Card from './Card.jsx';
+import ProductCard from './ProductCard.jsx';
 
 const CardSetMain = ({ filterProducts }) => {
     return (
         <div className="card-set">
             {filterProducts.map((product) => (
-                <Card
+                <ProductCard
                     key={product.id}
                     id={product.id}
                     image={product.image}
