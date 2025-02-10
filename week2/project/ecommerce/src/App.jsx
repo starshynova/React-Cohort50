@@ -40,12 +40,8 @@ const fetchSelectedCategory = (category) => fetchProducts(`https://fakestoreapi.
   }, []);
 
   const handleFilterProducts = (category) => {
-    if (category === 'all') {
-      fetchDefaultCard(); 
-    } else {
       fetchSelectedCategory(category);
     }
-  };
 
   if (loading) {
     return <div>Loading...</div>;
