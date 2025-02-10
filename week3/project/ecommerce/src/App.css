@@ -23,6 +23,7 @@ img {
 }
 
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: calc(25% - 20px);
@@ -69,6 +70,38 @@ h1 {
   font-weight: semi-bold;
   color: rgb(26, 41, 79);
   text-align: center;
+}
+
+.image-button {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+}
+
+.image-button:hover {
+  transform: scale(1.05);
+}
+
+.favorite-icon {
+  background-color: white;
+  width: 20px;
+  position: absolute;
+  top: 20px;
+  right: 0;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.product-image {
+  max-width: 40%;
+}
+
+.product-card {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
 }
 
 
@@ -128,22 +161,3 @@ h1 {
   }
 }
 
-.image-button img {
-  cursor: pointer;
-}
-
-.image-button img:hover {
-  transform: scale(1.05);
-}
-
-.product-image {
-  max-width: 40%;
-}
-
-.product-card {
-  display: flex;
-  gap: 40px;
-  justify-content: center;
-  align-items: center;
-  padding: 40px;
-}
