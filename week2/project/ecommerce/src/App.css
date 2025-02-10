@@ -12,7 +12,7 @@ img {
   object-fit: cover;
 }
 
-.card-set {
+.product-list {
   width: 80%;
   display: flex;
   gap: 20px;
@@ -77,7 +77,7 @@ h1 {
     width: calc(50% - 20px);
   }
 
-  .card-set {
+  .product-list {
     width: 90%;
     margin: 20px auto;
   }
@@ -105,7 +105,7 @@ h1 {
     width: 80%;
   }
 
-  .card-set {
+  .product-list {
     width: 90%;
     margin: 20px auto;
   }

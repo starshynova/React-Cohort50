@@ -1,8 +1,8 @@
 import ProductCard from './ProductCard.jsx';
 
-const CardSetMain = ({ filterProducts }) => {
+const ProductList = ({ filterProducts }) => {
     return (
-        <div className="card-set">
+        <div className="product-list">
             {filterProducts.map((product) => (
                 <ProductCard
                     key={product.id}
@@ -15,4 +15,4 @@ const CardSetMain = ({ filterProducts }) => {
     );
 };
 
-export default CardSetMain;
+export default ProductList;

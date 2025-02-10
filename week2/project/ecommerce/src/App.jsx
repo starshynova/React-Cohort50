@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import CategoryList from './CategoryList.jsx';
-import CardSetMain from './CardSetMain.jsx';
+import ProductList from './ProductList.jsx';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProductDetail from './ProductDetail.jsx';
 
@@ -70,7 +70,7 @@ function App() {
           <>
           <h1>Products</h1>
           <CategoryList setFilterProducts={handleFilterProducts} />
-          <CardSetMain filterProducts={filterProducts} />
+          <ProductList filterProducts={filterProducts} />
           </>
         } />
         <Route path="/product/:id" element={<ProductDetail />} />
