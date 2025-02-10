@@ -47,6 +47,10 @@ const fetchSelectedCategory = (category) => fetchProducts(`https://fakestoreapi.
     return <div>Loading...</div>;
   }
 
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
     <BrowserRouter>
       <Routes>
