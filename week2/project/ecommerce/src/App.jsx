@@ -69,7 +69,7 @@ function App() {
         <Route path="/" element={
           <>
           <h1>Products</h1>
-          <CategoryList setFilterProducts={handleFilterProducts} />
+          <CategoryList onFilterProducts={handleFilterProducts} />
           <ProductList filterProducts={filterProducts} />
           </>
         } />

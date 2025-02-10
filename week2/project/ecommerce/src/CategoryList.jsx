@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const CategoryList = ({ setFilterProducts }) => {
+const CategoryList = ({ onFilterProducts }) => {
     const [categories, setCategories] = useState([]);
 
     const fetchCategories = async () => {
@@ -22,7 +22,7 @@ const CategoryList = ({ setFilterProducts }) => {
             {categories.map((category, index) => (
                 <button className="category-list"
                     key={index} 
-                    onClick={() => setFilterProducts(category)} >
+                    onClick={() => onFilterProducts(category)} >
                     {category}
                 </button>
             ))}
