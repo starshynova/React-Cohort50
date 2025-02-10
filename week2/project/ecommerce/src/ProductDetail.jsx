@@ -15,7 +15,6 @@ const ProductDetail = () => {
                 const response = await fetch(`https://fakestoreapi.com/products/${id}`);
                 const data = await response.json();
                 setProduct(data);
-                setLoading(false);
             } catch (error) {
                 setError('Error fetching product')
                 console.error(error)
