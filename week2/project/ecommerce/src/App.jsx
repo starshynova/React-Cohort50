@@ -10,32 +10,17 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchDefaultCard = async () => {
-    try {
+
+const fetchProducts = async (url) => {
+  try {
     setLoading(true);
     setError(null);
-    const response = await fetch('https://fakestoreapi.com/products');
+    const response = await fetch(url);
+    
     if (!response.ok) {
       throw new Error('Failed to fetch products');
     }
-    const data = await response.json();
-    setFilterProducts(data);
-  } catch (error) {
-    console.error(error);
-    setError('Unable to get products, please try again');
-  } finally {
-    setLoading(false);
-  }
-}
 
-  const fetchSelectedCategory = async (category) => {
-    try {
-    setLoading(true);
-    setError(null);
-    const response = await fetch(`https://fakestoreapi.com/products/category/${category}`);
-    if (!response.ok) {
-      throw new Error('Failed to fetch category products');
-    }
     const data = await response.json();
     setFilterProducts(data);
   } catch (error) {
@@ -44,7 +29,11 @@ function App() {
   } finally {
     setLoading(false);
   }
-}; 
+};
+
+const fetchDefaultCard = () => fetchProducts('https://fakestoreapi.com/products');
+const fetchSelectedCategory = (category) => fetchProducts(`https://fakestoreapi.com/products/category/${category}`);
+
 
   useEffect(() => {
     fetchDefaultCard(); 
@@ -61,7 +50,6 @@ function App() {
   if (loading) {
     return <div>Loading...</div>;
   }
-
 
   return (
     <BrowserRouter>
