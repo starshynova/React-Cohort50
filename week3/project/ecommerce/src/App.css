@@ -7,6 +7,20 @@ main {
   justify-content: center;
 }
 
+header  {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  right: 0;
+}
+
 img {
   width: 100%;
   object-fit: cover;
@@ -92,6 +106,10 @@ h1 {
   z-index: 10;
 }
 
+.favorite-icon:hover {
+  transform: scale(1.2);
+}
+
 .product-image {
   max-width: 40%;
 }
@@ -131,6 +149,11 @@ h1 {
     height: auto;
     gap: 20px,
   }
+
+  nav {
+    flex-direction: column;
+    gap: 0px;
+  }
 }
 
 @media screen and (min-width: 0px) and (max-width: 768px) {
@@ -158,6 +181,11 @@ h1 {
     width: 90%;
     height: auto;
     gap: 20px,
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 0px;
   }
 }
 
