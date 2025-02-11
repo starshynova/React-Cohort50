@@ -1,8 +1,7 @@
 import React from 'react';
-// import {useFavorites} from './FavoriteContext';
-import Header from './Header';
-import ProductCard from './ProductCard';
-import { useFavorites } from './useFavorites.jsx';
+import Header from '../components/Header';
+import ProductCard from '../components/ProductCard';
+import { useFavorites } from '../hooks/useFavorites.jsx';
 
 
 const FavoritePage = ({ allProducts }) => {
