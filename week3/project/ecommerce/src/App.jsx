@@ -10,8 +10,10 @@ import Header from './Header.jsx';
 
 function App() {
 
+  const [favorites, setFavorites] = useState([]);
+
   return (
-    <FavoriteProvider>
+    <FavoriteProvider value={{ favorites, setFavorites }}>
       <BrowserRouter>
         <AppContent />
       </BrowserRouter>
@@ -42,7 +44,7 @@ const fetchProducts = async (url) => {
     }
 
     const data = await response.json();
-    setAllProducts(data);
+    // setAllProducts(data);
     setFilterProducts(data);
   } catch (error) {
     console.error(error);
@@ -52,8 +54,16 @@ const fetchProducts = async (url) => {
   }
 };
 
-const fetchDefaultCard = async () => await fetchProducts('https://fakestoreapi.com/products');
+// const fetchDefaultCard = async () => await fetchProducts('https://fakestoreapi.com/products');
+const fetchDefaultCard = async () => {
+  await fetchProducts('https://fakestoreapi.com/products');
+  setAllProducts(filterProducts); // Обновляем allProducts только после загрузки всех товаров
+};
 const fetchSelectedCategory = async (category) => await fetchProducts(`https://fakestoreapi.com/products/category/${category}`);
+
+// const fetchSelectedCategory = (category) => {
+//   fetchProducts(`https://fakestoreapi.com/products/category/${category}`);
+// };
 
 
   useEffect(() => {
