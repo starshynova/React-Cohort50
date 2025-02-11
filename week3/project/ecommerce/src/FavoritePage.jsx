@@ -3,9 +3,11 @@ import {useFavorites} from './FavoriteContext';
 import Header from './Header';
 import ProductCard from './ProductCard';
 
-const FavoritePage = ({ products }) => {
+
+const FavoritePage = ({ allProducts }) => {
     const { favorites } = useFavorites();
-    const favoriteProducts = products.filter((product) => favorites.includes(product.id));
+    
+    const favoriteProducts = allProducts.filter((product) => favorites.includes(product.id));
 
 return (
     <div>

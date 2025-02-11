@@ -2,22 +2,39 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import CategoryList from './CategoryList.jsx';
 import ProductList from './ProductList.jsx';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import ProductDetail from './ProductDetail.jsx';
 import { FavoriteProvider } from './FavoriteContext.jsx';
 import FavoritePage from './FavoritePage.jsx';
 import Header from './Header.jsx';
 
 function App() {
+
+  return (
+    <FavoriteProvider>
+      <BrowserRouter>
+        <AppContent />
+      </BrowserRouter>
+    </FavoriteProvider>
+  );
+}
+
+function AppContent() {
+
   const [filterProducts, setFilterProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [allProducts, setAllProducts] = useState([]);
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
 
 const fetchProducts = async (url) => {
   try {
     setLoading(true);
     setError(null);
+
     const response = await fetch(url);
     
     if (!response.ok) {
@@ -25,6 +42,7 @@ const fetchProducts = async (url) => {
     }
 
     const data = await response.json();
+    setAllProducts(data);
     setFilterProducts(data);
   } catch (error) {
     console.error(error);
@@ -34,17 +52,45 @@ const fetchProducts = async (url) => {
   }
 };
 
-const fetchDefaultCard = () => fetchProducts('https://fakestoreapi.com/products');
-const fetchSelectedCategory = (category) => fetchProducts(`https://fakestoreapi.com/products/category/${category}`);
+const fetchDefaultCard = async () => await fetchProducts('https://fakestoreapi.com/products');
+const fetchSelectedCategory = async (category) => await fetchProducts(`https://fakestoreapi.com/products/category/${category}`);
 
 
   useEffect(() => {
     fetchDefaultCard(); 
   }, []);
 
+  // const handleFilterProducts = (category) => {
+  //   if (category) {
+  //     const filtered = allProducts.filter(product => product.category === category);
+  //     setFilterProducts(filtered);
+  //   } else {
+  //     setFilterProducts(allProducts);
+  //   }
+  // };
+    
   const handleFilterProducts = (category) => {
-      fetchSelectedCategory(category);
+    if (category) {
+       fetchSelectedCategory(category); // Загружаем товары по категории с API
+    } else {
+      fetchDefaultCard(); // Загружаем все товары
     }
+  };
+
+
+    const resetFilter = () => {
+      // setFilterProducts(allProducts);
+      fetchDefaultCard();
+      navigate('/');
+    };
+  
+    useEffect(() => {
+      if (location.pathname === '/') {
+        // setFilterProducts(allProducts);
+        fetchDefaultCard();
+      }
+    }, [location.pathname]);
+
 
   if (loading) {
     return <div>Loading...</div>;
@@ -55,23 +101,18 @@ const fetchSelectedCategory = (category) => fetchProducts(`https://fakestoreapi.
   }
 
   return (
-    <FavoriteProvider>
-    <BrowserRouter>
       <Routes>
         <Route path="/" element={
           <>
-          <Header title="Products" />
+          <Header title="Products" resetFilter={resetFilter} />
           <CategoryList onFilterProducts={handleFilterProducts} />
           <ProductList filterProducts={filterProducts} />
           </>
         } />
-        <Route path="/" element={<App />} />
         <Route path="/product/:id" element={<ProductDetail />} />
-        <Route path="/favorites" element={<FavoritePage products={filterProducts}/>} />
+        <Route path="/favorites" element={<FavoritePage allProducts={allProducts} />} />
       </Routes>
-    </BrowserRouter>
-  </FavoriteProvider>
-  )
+  );
 };
 
 export default App;
