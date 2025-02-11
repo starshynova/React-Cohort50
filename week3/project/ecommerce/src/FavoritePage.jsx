@@ -1,29 +1,27 @@
 import React from 'react';
-import { useContext } from 'react';
-import {FavoriteContext} from './FavoriteContext';
-import ProductList from './ProductList';
+import {useFavorites} from './FavoriteContext';
 import Header from './Header';
+import ProductCard from './ProductCard';
 
-const FavoritePage = () => {
-    const {favorite, removeFromFavorite} = useContext(FavoriteContext);
+const FavoritePage = ({ products }) => {
+    const { favorites } = useFavorites();
+    const favoriteProducts = products.filter((product) => favorites.includes(product.id));
 
-    return (
-        <div>
-             <Header title="Favorites" />
-            {favorite.length === 0 ? <p>You do not have any favorite items yet</p> : (
-                <ProductList filterProducts={favorite} />
-                        // <>
-        //   <ul>
-        //     {favorite.map((item) => (
-        //       <li key={item.id}>
-        //         <ProductCard />
-        //       </li>
-        //     ))}
-        //   </ul>
-        // </>
-      )}
+return (
+    <div>
+        <Header title="Favorites" />
+            <div className='product-list'>
+                {favoriteProducts.length > 0 ? (
+                    favoriteProducts.map((product) => (
+                        <ProductCard key={product.id} {...product} />
+                    ))
+                ) : (
+                    <p>You do not have any favorite items yet</p>
+                )}
+            </div>
         </div>
     )
 }
+
 
 export default FavoritePage;

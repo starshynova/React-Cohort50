@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import CategoryList from './CategoryList.jsx';
 import ProductList from './ProductList.jsx';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProductDetail from './ProductDetail.jsx';
 import { FavoriteProvider } from './FavoriteContext.jsx';
 import FavoritePage from './FavoritePage.jsx';
@@ -61,22 +61,13 @@ const fetchSelectedCategory = (category) => fetchProducts(`https://fakestoreapi.
         <Route path="/" element={
           <>
           <Header title="Products" />
-          {/* <div calssName="header">
-          <h1>Products</h1>
-          <Link to={'/'}>
-            <a><h3>All products</h3></a>
-          </Link>
-          <Link to={'/favorites'}>
-            <a><h3>Favorites</h3></a>
-          </Link>  
-          </div> */}
           <CategoryList onFilterProducts={handleFilterProducts} />
           <ProductList filterProducts={filterProducts} />
           </>
         } />
         <Route path="/" element={<App />} />
         <Route path="/product/:id" element={<ProductDetail />} />
-        <Route path="/favorites" element={<FavoritePage />} />
+        <Route path="/favorites" element={<FavoritePage products={filterProducts}/>} />
       </Routes>
     </BrowserRouter>
   </FavoriteProvider>
