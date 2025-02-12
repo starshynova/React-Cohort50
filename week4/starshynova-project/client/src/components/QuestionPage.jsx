@@ -5,6 +5,7 @@ import { getData } from '../getData.js';
 import { randomNumber } from '../randomNumbers.js';
 import { simplify, parse, derivative } from 'mathjs';
 import InputField from './InputField.jsx';
+import AnswerButton from './AnswerButton.jsx';
 
 const values = 
 {a: randomNumber(1, 100),
@@ -16,6 +17,9 @@ const QuestionPage = () => {
     const [example, setExample] = useState("");
     const [result, setResult] = useState("");
     const [userAnswer, setUserAnswer] = useState("");
+    const [correctAnswer, setCorrectAnswer] = useState("");
+    const [countCorrectAnswer, setCountCorrectAnswer] = useState(0);
+    const [countIncorrectAnswer, setCountIncorrectAnswer] = useState(0);
   
     useEffect(() => {
     const fetchFormula = async () => {
@@ -58,11 +62,15 @@ const handleInputChange = (value) => {
     setUserAnswer(value);
 };
 
-useEffect(() => {
-    if (userAnswer !== "" && Number(userAnswer) === result) {
-        alert("Your answer is correct!");
-    }
-}, [userAnswer, result]);
+// useEffect(() => {
+//     if (userAnswer !== "" && Number(userAnswer) === result) {
+//         setCountCorrectAnswer(countCorrectAnswer + 1);
+//         console.log(countCorrectAnswer);
+//     } else {
+//         setCountIncorrectAnswer(countIncorrectAnswer + 1);
+//         console.log(countIncorrectAnswer)
+//     }
+// }, [userAnswer, result]);
 
     // if (UsersAnswer === result) {
     //     alert("Your answer is correct!");
@@ -71,13 +79,32 @@ useEffect(() => {
     //     alert("Try again!");
     // }
 
+    
+
+    const checkAnswer = () => {
+        if (Number(userAnswer) === result) {
+          setCorrectAnswer("Your answer is correct!");
+          setCountCorrectAnswer((prev) => prev + 1);
+        } else {
+          setCorrectAnswer("Try again!");
+          setCountIncorrectAnswer((prev) => prev + 1);
+        }
+      };
+
+
     return (
         <div>
             <h1>{operation}</h1>
             <p>{formula}</p>
             <p>{example}</p>
-            <InputField onInputChange={handleInputChange} />
+            <div className="answer-block">
+                <InputField onInputChange={handleInputChange} userAnswer={userAnswer} />
+                <AnswerButton onButtonClick={checkAnswer} />
+            </div>
+            <p>{correctAnswer}</p>
             <p>Правильный ответ: {result}</p>
+            <p>Верных ответов: {countCorrectAnswer}</p>
+            <p>Неверных ответов: {countIncorrectAnswer}</p>
         </div>
     );
 };
