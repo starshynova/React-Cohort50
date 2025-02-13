@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 import { parse } from "mathjs";
-import { randomNumber } from "../randomNumbers.js";
+import { randomNumber, checkSubtraction } from "../randomNumbers.js";
 import { getData } from "../getData.js";
 
 const useGenerateExample = (operation) => {
@@ -24,10 +24,21 @@ const useGenerateExample = (operation) => {
     }, [operation]);
 
     const generateNewExample = () => {
-        const newValues = {
+        // if (operation === 'multiplication') {}
+        let newValues = {
             a: randomNumber(1, 100),
             b: randomNumber(1, 100),
         };
+
+    
+       
+    
+        if (operation === 'subtraction') {
+            checkSubtraction();
+            newValues = checkSubtraction(newValues.a, newValues.b);
+        }
+        
+
         setValues(newValues);
 
         const formulaNumbers = formula.replace(/a/g, newValues.a).replace(/b/g, newValues.b);

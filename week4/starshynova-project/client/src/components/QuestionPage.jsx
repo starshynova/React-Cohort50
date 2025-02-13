@@ -2,7 +2,7 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import { getData } from '../getData.js';
-import { randomNumber } from '../randomNumbers.js';
+import { randomNumber, checkSubtraction } from '../randomNumbers.js';
 import { simplify, parse, derivative } from 'mathjs';
 import InputField from './InputField.jsx';
 import Button from './Button.jsx';
@@ -23,7 +23,7 @@ const QuestionPage = () => {
     // const [countIncorrectAnswer, setCountIncorrectAnswer] = useState(0);
   
     const { operation } = useParams();
-    const { example, result, generateNewExample } = useGenerateExample(operation);
+    const { example, result, formula, generateNewExample } = useGenerateExample(operation);
     const [userAnswer, setUserAnswer] = useState("");
     const [correctAnswer, setCorrectAnswer] = useState("");
     const [countCorrectAnswer, setCountCorrectAnswer] = useState(0);
@@ -65,6 +65,8 @@ const QuestionPage = () => {
 //             <InputField onInputChange={handleInputChange} />
 //         )
 //     }
+
+
 
 const handleInputChange = (value) => {
     setUserAnswer(value);
@@ -109,7 +111,7 @@ const handleInputChange = (value) => {
     return (
         <div>
             <h1>{operation}</h1>
-            {/* <p>{formula}</p> */}
+            <p>{formula}</p>
             <p>{example}</p>
             <div className="answer-block">
                 <InputField onInputChange={handleInputChange} userAnswer={userAnswer} />
