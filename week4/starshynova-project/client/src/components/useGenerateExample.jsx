@@ -24,20 +24,34 @@ const useGenerateExample = (operation) => {
     }, [operation]);
 
     const generateNewExample = () => {
-        // if (operation === 'multiplication') {}
-        let newValues = {
-            a: randomNumber(1, 100),
-            b: randomNumber(1, 100),
-        };
+        let newValues = {}; // Объявляем переменную перед условием
 
-    
-       
-    
-        if (operation === 'subtraction') {
-            checkSubtraction();
-            newValues = checkSubtraction(newValues.a, newValues.b);
+        if (operation === 'addition') {
+            newValues = {
+                a: randomNumber(1, 100),
+                b: randomNumber(1, 100),
+            };
+        } else if (operation === 'division') {
+            newValues = {
+                b: randomNumber(1, 10), 
+            };
+            newValues.a = newValues.b * randomNumber(1, 10); // Гарантируем, что a делится на b
+        } else if (operation === 'subtraction') {
+            newValues = checkSubtraction(randomNumber(1, 100), randomNumber(1, 100));
+            // let tempValues = {
+            //     a: randomNumber(1, 100),
+            //     b: randomNumber(1, 100),
+            // };
+            // newValues = checkSubtraction(tempValues);
+        } else if (operation === 'multiplication') {
+            newValues = {
+                a: randomNumber(1, 10),
+                b: randomNumber(1, 10),
+            };
+        } else {
+            console.error("Unknown operation:", operation);
+            return;
         }
-        
 
         setValues(newValues);
 
@@ -47,7 +61,7 @@ const useGenerateExample = (operation) => {
         const f = parse(formula);
         const evaluatedResult = f.evaluate(newValues);
         setResult(evaluatedResult);
-    };
+}
 
     useEffect(() => {
         if (formula) {
