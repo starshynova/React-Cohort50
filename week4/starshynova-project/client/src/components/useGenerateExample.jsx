@@ -5,6 +5,7 @@ import { randomNumber, checkSubtraction } from "../randomNumbers.js";
 import { getData } from "../getData.js";
 
 const useGenerateExample = (operation) => {
+    // const [dataOperation, setDataOperation] = useState("");
     const [formula, setFormula] = useState("");
     const [example, setExample] = useState("");
     const [result, setResult] = useState("");
@@ -24,7 +25,7 @@ const useGenerateExample = (operation) => {
     }, [operation]);
 
     const generateNewExample = () => {
-        let newValues = {}; // Объявляем переменную перед условием
+        let newValues = {}; 
 
         if (operation === 'addition') {
             newValues = {

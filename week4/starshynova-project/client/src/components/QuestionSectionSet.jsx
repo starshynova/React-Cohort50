@@ -1,7 +1,7 @@
 import React from 'react';
 import {useEffect, useState} from 'react';
 import QuestionSection from './QuestionSection.jsx';
-import {getData} from '../getData.js';
+import {getData, getOperationName} from '../getData.js';
 import './component.css';
 
 
@@ -11,7 +11,7 @@ const QuestionSectionSet = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await getData();
+            const result = await getOperationName();
             setData(result);
         };
 

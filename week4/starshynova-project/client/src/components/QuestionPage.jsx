@@ -119,9 +119,9 @@ const handleInputChange = (value) => {
                 <Button onButtonClick={nextExample} title="Next example"/>
             </div>
             <p>{correctAnswer}</p>
-            <p>Правильный ответ: {result}</p>
-            <p>Верных ответов: {countCorrectAnswer}</p>
-            <p>Неверных ответов: {countIncorrectAnswer}</p>
+            <p>Right answer is {result}</p>
+            <p>Count of the correct answers: {countCorrectAnswer}</p>
+            <p>Count of the incorrect answers: {countIncorrectAnswer}</p>
         </div>
     );
 };
