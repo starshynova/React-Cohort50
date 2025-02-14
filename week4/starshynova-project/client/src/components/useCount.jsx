@@ -15,5 +15,5 @@ export const useCount = () => {
     }
   };
 
-  return { countCorrectAnswer, countIncorrectAnswer, correctAnswer, answerCalculation };
+  return { countCorrectAnswer, setCountCorrectAnswer, countIncorrectAnswer, setCountIncorrectAnswer, correctAnswer, setCorrectAnswer, answerCalculation };
 };

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useCount } from './useCount.jsx';
 import { Link } from 'react-router-dom';
-import Button from './Button.jsx'
+import Button from './Button.jsx';
 
 const ResultPage = () => {
     const [advice, setAdvice] = useState('');
@@ -26,16 +26,15 @@ const ResultPage = () => {
         
     }, [countCorrectAnswer, countIncorrectAnswer]);
 
-    // const goToMainPage = () => {
-    //         // setCountCorrectAnswer(0);
-    //         // setCountIncorrectAnswer(0);
-    //         resetCounts();
-    // };
+    const goToMainPage = () => {
+            setCountCorrectAnswer(0);
+            setCountIncorrectAnswer(0);
+    };
 
-    useEffect(() => {
-        setCountCorrectAnswer(0);
-        setCountIncorrectAnswer(0);
-    }, [setCountCorrectAnswer, setCountIncorrectAnswer]);
+    // useEffect(() => {
+    //     setCountCorrectAnswer(0);
+    //     setCountIncorrectAnswer(0);
+    // }, [setCountCorrectAnswer, setCountIncorrectAnswer]);
 
     return (
         <>
@@ -44,9 +43,7 @@ const ResultPage = () => {
             <p>Incorrect answers: {countIncorrectAnswer}</p>
             <h2>{advice}</h2>
             <Link to={'/'}>
-                {/* <button className="question-section" onClick={goToMainPage}>
-                    Go to the main page</button> */}
-                <Button title="Main Page"  />
+                <Button title="Main Page" onButtonClick={goToMainPage} />
             </Link>
         </>
     );
