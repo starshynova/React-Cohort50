@@ -1,10 +1,10 @@
 import React from 'react';
 import {useState} from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import InputField from './InputField.jsx';
 import Button from './Button.jsx';
 import useGenerateExample from './useGenerateExample.jsx';
-import {useCount} from './useCount.jsx'
+import {useCount} from './useCount.jsx';
 
 
 const QuestionPage = () => {
@@ -28,7 +28,7 @@ const QuestionPage = () => {
 
   const nextExample = () => {
     generateNewExample();
-    // setUserAnswer('');
+    setUserAnswer('');
   }
 
 
@@ -41,6 +41,9 @@ const QuestionPage = () => {
         <InputField onInputChange={handleInputChange} userAnswer={userAnswer} />
         <Button onButtonClick={checkAnswer} title="Check answer"/>
         <Button onButtonClick={nextExample} title="Next example"/>
+        <Link to={'/result'}>
+          <Button title="Show result" />
+        </Link>
       </div>
       <p>{correctAnswer}</p>
       <p>Right answer is {result}</p>

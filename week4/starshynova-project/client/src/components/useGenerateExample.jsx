@@ -38,8 +38,8 @@ const useGenerateExample = (operation) => {
         
             if (checkFunction) {
                 try {
-                    const checkFunc = new Function("b", "randomNumber", checkFunction);
-                    const checkedValues = checkFunc(b, randomNumber);
+                    const checkFunc = new Function("a", "b", "randomNumber", checkFunction);
+                    const checkedValues = checkFunc(a, b, randomNumber);
                     a = checkedValues.a;
                     b = checkedValues.b;
                 } catch (error) {
